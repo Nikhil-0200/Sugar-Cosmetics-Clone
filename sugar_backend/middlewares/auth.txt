@@ -1,0 +1,11 @@
+For Auth Middleware
+
+1. Making of auth Middleware
+2. Getting hold of req.headers["authorization"]
+3. Taking out token from from authHeaders = req.headers
+4. If token is false, then return Token Required.
+5. If token is true, then verify token by the use of JWT.
+6. If not verified then return err -> Invalid Token.
+7. If verified then, fetch variable userId = decoded.id and then set user = await userModel.findById(userId).
+8. If user not found then return -> User not found in auth.
+9. If user found then return -> req.user = user and next(). 
