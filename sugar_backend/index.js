@@ -5,14 +5,15 @@ dotenv.config();
 import userRouter from "./routes/user.route.js"
 import auth from "./middlewares/auth.middleware.js";
 import productRouter from "./routes/product.route.js";
-import authorization from "./middlewares/authorization.middleware.js";
+import cartRouter from "./routes/cart.route.js";
 
 const PORT = process.env.PORT || 3009;
 const server = express();
 
 server.use(express.json());
 server.use("/user", userRouter)
-server.use("/product", [auth, authorization], productRouter)
+server.use("/product", auth, productRouter)
+server.use("/cart", auth, cartRouter)
 
 server.get("/", (req, res)=>{
     res.send(`Server running fine`)

@@ -1,0 +1,5 @@
+1. get hold of id - params.
+2. get hold of user's id which user is loggedIn.
+3. find product which we are trying to add to a cart. if not present then return product not found.
+4. then find a cart for user, for adding item to cart. if cart not created then create a new one.
+5. now when cart is created or found then, check if the the product we are trying to add is present in cart or not. if present then increase the quantity of product else push product in the cart with quantity set to 1.
