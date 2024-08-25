@@ -6,9 +6,14 @@ import userRouter from "./routes/user.route.js"
 import auth from "./middlewares/auth.middleware.js";
 import productRouter from "./routes/product.route.js";
 import cartRouter from "./routes/cart.route.js";
+import cors from "cors";
 
 const PORT = process.env.PORT || 3009;
 const server = express();
+
+server.use(cors({
+    origin: "*"
+}))
 
 server.use(express.json());
 server.use("/user", userRouter)
