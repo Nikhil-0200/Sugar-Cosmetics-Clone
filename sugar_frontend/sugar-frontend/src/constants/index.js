@@ -25,6 +25,15 @@ import {
   sugarPlaySide_image,
 } from "../assets/images/nav_images/sideImages";
 
+
+import {firstSlider1_image1,
+  firstSlider1_image2,
+  firstSlider1_image3,
+  firstSlider1_image4,
+  firstSlider1_image5,
+  firstSlider1_image6
+} from "../assets/images/firstSlider_images/index"
+
 export const sideNavLink = [
   {
     label: "Lips",
@@ -177,6 +186,15 @@ export const sideNavLink1 = [
   {label: "terms & conditions", href:"/"},
   {label: "careers", href:"/"},
   {label: "about us", href:"/"}
+];
+
+export const firstSliderLink = [
+  {src:firstSlider1_image1},
+  {src: firstSlider1_image2},
+  {src: firstSlider1_image3},
+  {src: firstSlider1_image4},
+  {src: firstSlider1_image5},
+  {src: firstSlider1_image6}
 ]
 
 

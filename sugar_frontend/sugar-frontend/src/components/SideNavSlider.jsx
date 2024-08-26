@@ -66,8 +66,8 @@ function SwipeToSlide() {
       </div>
 
       <div className="py-4">
-        {sideNavLink1.map((ele)=>(
-          <div className="uppercase border-b-[0.5px] border-gray-400 py-5 px-4">
+        {sideNavLink1.map((ele, index)=>(
+          <div key={index} className="uppercase border-b-[0.5px] border-gray-400 py-5 px-4">
             {ele.label}
           </div>
         ))}
