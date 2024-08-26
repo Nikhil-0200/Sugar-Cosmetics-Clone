@@ -166,4 +166,17 @@ export const sideNavLink = [
   },
 ];
 
+export const sideNavLink1 = [
+  {label: "blog", href:"/"},
+  {label: "offers", href:"/"},
+  {label: "stores", href:"/"},
+  {label: "corporate gifting", href:"/"},
+  {label: "help & support", href:"/"},
+  {label: "faq", href:"/"},
+  {label: "refund & return policy", href:"/"},
+  {label: "terms & conditions", href:"/"},
+  {label: "careers", href:"/"},
+  {label: "about us", href:"/"}
+]
+
 

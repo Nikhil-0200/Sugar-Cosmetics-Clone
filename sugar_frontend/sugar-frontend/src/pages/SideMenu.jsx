@@ -8,7 +8,7 @@ import SwipeToSlide from "../components/SideNavSlider";
 const SideMenu = ({setMenuClose}) => {
 
   return (
-    <section className="mobile:block tablet:hidden fixed h-screen bg-white w-full text-black z-20 px-2 pt-6">
+    <section className="mobile:block tablet:hidden h-screen bg-white w-full text-black z-20 px-2 pt-6 overflow-y-auto">
       <div className="laptop:w-[200px] tablet:flex-none mobile:flex mobile:gap-6 pb-10 px-4">
         <IconContext.Provider
           value={{ size: 32, style:{color:"black"}, className: "global-class-name" }}
