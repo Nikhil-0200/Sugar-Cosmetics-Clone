@@ -3,6 +3,7 @@ import { BiGift } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import mobSugar_Image from "../assets/images/nav_images/mobSugar_Image.gif"
+import { SideMenu } from "../pages/SideMenu";
 
 import {
   cart_icon,
@@ -15,19 +16,30 @@ import {
   wishlist_icon,
 } from "../assets/svg/icon";
 import { navLinks } from "../constants";
+import { useState } from "react";
 
 const Nav = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+function handleNavBtn(){
+  setMenuOpen(!menuOpen)
+  console.log(menuOpen)
+  
+}
+
   return (
     <section className="font-sans mobile: tablet:bg-black text-white mobile:z-10 mobile:fixed mobile:w-full top-0">
+      {menuOpen && <SideMenu/> }
+      
       <div className="flex justify-between text-navFont py-4 tablet:px-5 laptop:px-16 mobile:px-3 mobile:bg-white tablet:bg-black mobile:text-black tablet:text-white mobile:shadow-md">
         <div className="flex w-[70%] tablet:gap-[20px] laptop:gap-[70px]">
           <div className="laptop:w-[200px] tablet:flex-none mobile:flex mobile:gap-6">
           <IconContext.Provider
               value={{ size: 22, className: "global-class-name" }}
             >
-            <a className="tablet:hidden" href="/">
+            <button className="tablet:hidden" onClick={handleNavBtn}>
             <HiMenuAlt2 />
-            </a>
+            </button>
             </IconContext.Provider>
 
             <a className="mobile:hidden tablet:flex tablet:w-[170px] laptop:flex laptop:w-[200px] justify-center items-center" href={"/"}>
