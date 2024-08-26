@@ -7,6 +7,9 @@ import mobSugar_Image from "../assets/images/nav_images/mobSugar_Image.gif"
 import {
   cart_icon,
   discount_icon,
+  mobCart_icon,
+  mobSearch_icon,
+  mobWishlist_icon,
   person_icon,
   search_icon,
   wishlist_icon,
@@ -15,12 +18,12 @@ import { navLinks } from "../constants";
 
 const Nav = () => {
   return (
-    <section className="font-sans bg-black text-white">
-      <div className="flex justify-between text-navFont py-4 tablet:px-5 laptop:px-16">
+    <section className="font-sans mobile: tablet:bg-black text-white mobile:z-10 mobile:fixed mobile:w-full top-0">
+      <div className="flex justify-between text-navFont py-4 tablet:px-5 laptop:px-16 mobile:px-3 mobile:bg-white tablet:bg-black mobile:text-black tablet:text-white mobile:shadow-md">
         <div className="flex w-[70%] tablet:gap-[20px] laptop:gap-[70px]">
-          <div className="laptop:w-[200px] tablet:flex-none mobile:flex mobile:flex-row border-2">
+          <div className="laptop:w-[200px] tablet:flex-none mobile:flex mobile:gap-6">
           <IconContext.Provider
-              value={{ size: 22, style:{background:"red"}, className: "global-class-name" }}
+              value={{ size: 22, className: "global-class-name" }}
             >
             <a className="tablet:hidden" href="/">
             <HiMenuAlt2 />
@@ -37,7 +40,7 @@ const Nav = () => {
 
           <div className="bg-[#212121] border-[1px] mobile:hidden tablet:flex rounded-md flex w-full h-[45px] justify-between">
             <input
-              className="w-full bg-transparent px-1 pl-5"
+              className="w-full bg-transparent px-1 pl-5 border-none focus:outline-none"
               type="text"
               placeholder="Try Liquid Lipstick"
             />
@@ -54,7 +57,7 @@ const Nav = () => {
             <p className="content-center">Login/Register</p>
           </span>
 
-          <span className="flex tablet:w-1/3 justify-between border-2">
+          <span className="flex tablet:w-1/3 justify-between gap-6">
             <IconContext.Provider
               value={{ size: 22, className: "global-class-name" }}
             >
@@ -62,18 +65,25 @@ const Nav = () => {
                 <BiGift />
               </a>
             </IconContext.Provider>
-            <a className="content-center" href="/wishList">
+            <a className="content-center mobile:hidden tablet:block" href="/wishList">
               <img src={wishlist_icon} alt="" />
             </a>
-            <a className="content-center" href="/cart">
+            <a className="content-center mobile:block tablet:hidden" href="/wishList">
+              <img className="size-[22px]" src={mobWishlist_icon} alt="" />
+            </a>
+            <a className="content-center mobile:hidden tablet:block" href="/cart">
               <img src={cart_icon} alt="" />
+            </a>
+            <a className="content-center  mobile:block tablet:hidden" href="/cart">
+              <img className="size-[22px]" src={mobCart_icon} alt="" />
             </a>
             <a
               className="content-center mobile:hidden laptop:flex"
               href="/offer"
             >
-              <img src={discount_icon} alt="" />
+              <img  src={discount_icon} alt="" />
             </a>
+            
           </span>
         </div>
       </div>
@@ -87,6 +97,12 @@ const Nav = () => {
           ))}
         </ul>
       </div>
+
+      <div className="flex tablet:hidden justify-center m-auto border-[1px] border-black bg-white rounded-lg mobile:px-3 w-11/12 h-8 my-1">
+        <img className="scale-50" src={mobSearch_icon} alt="mobSearch_icon"/>
+        <input type="text" placeholder="Lipsticks" className="w-full border-none focus:outline-none text-black"/>
+      </div>
+
     </section>
   );
 };

@@ -23,6 +23,10 @@ export default {
         paddingSectionT: "4.75rem",
         paddingSectionB: "2.75rem",
       },
+      margin:{
+        marginSectionT: "8.2rem",
+        marginSectionTMob: "6.2rem",
+      },
       minHeight: {
         chota: "20rem",
       },

@@ -30,6 +30,8 @@ import home_icon from "./home_icon.svg";
 import mobSearch_icon from "./mobSearch_icon.svg";
 import mobGift_icon from "./mobGift_icon.svg";
 import mobMenu_icon from "./mobMenu_icon.svg";
+import mobCart_icon from "./mobCart_icon.svg"
+import mobWishlist_icon from "./mobWishlist_icon.svg"
 
 export {
   arrow_icon,
@@ -62,5 +64,7 @@ export {
   home_icon,
   mobSearch_icon,
   mobGift_icon,
-  mobMenu_icon
+  mobMenu_icon,
+  mobCart_icon,
+  mobWishlist_icon
 };
