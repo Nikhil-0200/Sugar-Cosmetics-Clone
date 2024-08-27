@@ -17,7 +17,7 @@ server.use(cors({
 
 server.use(express.json());
 server.use("/user", userRouter)
-server.use("/product", auth, productRouter)
+server.use("/product", productRouter)
 server.use("/cart", auth, cartRouter)
 
 server.get("/", (req, res)=>{
