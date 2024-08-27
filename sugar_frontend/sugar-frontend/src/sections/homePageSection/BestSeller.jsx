@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Loading, Error } from "../../components/Loading";
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { MbTitle } from "../../components/MbTitle";
 
 export const BestSeller = () => {
   const [loading, setLoading] = useState(false);
@@ -15,22 +16,19 @@ export const BestSeller = () => {
   const [limits, setLimits] = useState(4);
 
   const updateLimits = () => {
-    if (window.innerWidth >= 1024) { // Matches laptop screen size
+    if (window.innerWidth >= 1024) { 
       setLimits(4);
-    } else if (window.innerWidth >= 640) { // Matches tablet screen size
+    } else if (window.innerWidth >= 640) { 
       setLimits(3);
-    } else { // For mobile screen size
+    } else { 
       setLimits(2);
     }
   };
   
   useEffect(() => {
-    // Call the function to set the initial limit
     updateLimits();
-    // Add event listener to update limits on window resize
     window.addEventListener("resize", updateLimits);
 
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", updateLimits);
     };
@@ -84,22 +82,27 @@ export const BestSeller = () => {
   }
 
   return (
-    <div className="border-2 border-black bg-homePageBG1 bg-cover bg-top text-white">
+    <div className=" bg-homePageBG1 bg-cover bg-top text-white w-full mobile:rounded-bl-3xl tablet:rounded-none tablet:pb-10 tablet:pt-5">
+    <div className="mobile:block py-4 pb-2 rounded-bl-3xl bg-white text-black tablet:hidden">
+        <MbTitle text={"Bestsellers"}/>
+      </div>
+
         {loading && <Loading/>}
-        <div className="mt-5">
+        <div className="mt-5 mobile:hidden tablet:block">
       <Title text={"Bestsellers"} />
         </div>
-      <div className="flex justify-between laptop:px-16 tablet:px-6 mobile:px-2">
-        <button style={{scale:"2.5", paddingRight: "7px"}} onClick={handlePrev}>
+
+      <div className="flex justify-between mobile:justify-center mobile:gap-3 laptop:px-16 tablet:px-6 mobile:px-8 mobile:relative ">
+        <button className="mobile:absolute tablet:static mobile:top-1/2 mobile:left-4" style={{scale:"2.5", paddingRight: "7px", color:"aqua"}} onClick={handlePrev}>
           <IoIosArrowDropleftCircle />
         </button>
         {data.map((ele) => (
           <Card data={ele} />
         ))}
-        <button style={{scale:"2.5", paddingLeft: "7px"}} onClick={handleNext}>
+        <button className="mobile:absolute tablet:static mobile:top-1/2 mobile:right-4 " style={{scale:"2.5", paddingLeft: "7px", color:"aqua"}} onClick={handleNext}>
           <IoIosArrowDroprightCircle />
         </button>
       </div>
     </div>
-  );
+    );
 };

@@ -43,6 +43,17 @@ import {
   mbFirstSlider1_image6,
 } from "../assets/images/firstSlider_images/index";
 
+import {
+  image_2016,
+  image_2017,
+  image_2018,
+  image_2019,
+  image_2020,
+  image_2021,
+  image_2022,
+  image_2023,
+} from "../assets/images/sugarIcons/index";
+
 export const sideNavLink = [
   {
     label: "Lips",
@@ -195,4 +206,16 @@ export const firstSliderLink = [
   { src: firstSlider1_image4, srcMb: mbFirstSlider1_image4 },
   { src: firstSlider1_image5, srcMb: mbFirstSlider1_image5 },
   { src: firstSlider1_image6, srcMb: mbFirstSlider1_image6 },
+];
+
+
+export const sugarIconicLink = [
+  {src: image_2016},
+  {src: image_2017},
+  {src: image_2018},
+  {src: image_2019},
+  {src: image_2020},
+  {src: image_2021},
+  {src: image_2022},
+  {src: image_2023},
 ];

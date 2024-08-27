@@ -5,7 +5,7 @@ import { MdCurrencyRupee } from "react-icons/md";
 export const Card = ({data}) => {
 
   return (
-    <section className="flex justify-center items-center content-center py-10 pb-20 font-sans">
+    <section className="flex justify-center items-center content-center py-10 mobile:pb-10 pb-20 font-sans">
       <div className=" mobile:w-[170px] tablet:w-[210px] laptop:w-[245px] border-2 laptop:h-[450px] rounded-2xl overflow-hidden bg-white text-black flex flex-col justify-between">      
         <div className="h-[60%] rounded-xl bg-cover bg-center overflow-hidden">
           <img

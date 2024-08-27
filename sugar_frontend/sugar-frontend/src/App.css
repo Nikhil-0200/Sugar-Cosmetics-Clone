@@ -1,0 +1,8 @@
+.slide-item {
+    margin-right: 10px; /* Adjust the spacing here */
+}
+
+/* To remove extra space after the last slide */
+.slick-slide {
+    padding: 0 15px;
+}
