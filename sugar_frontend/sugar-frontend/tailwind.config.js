@@ -32,6 +32,7 @@ export default {
       },
       backgroundImage: {
         navTopImage: "url('./assets/images/pinkNav_images/pinkNav_bg.jpg')",
+        homePageBG1: "url('./assets/images/bg/homePageBG1.jpg')",
       },
     },
   },

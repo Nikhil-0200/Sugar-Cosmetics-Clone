@@ -26,7 +26,7 @@ function handleNavBtn(){
 }
 
   return (
-    <section className="font-sans mobile: tablet:bg-black text-white mobile:z-10 mobile:fixed mobile:w-full top-0">
+    <section className="font-sans mobile: tablet:bg-black text-white mobile:z-10 mobile:fixed mobile:w-full top-0 bg-white pb-1">
       {menuOpen && <SideMenu setMenuClose={setMenuOpen} /> }
       
       <div className="flex justify-between text-navFont py-4 tablet:px-5 laptop:px-16 mobile:px-3 mobile:bg-white tablet:bg-black mobile:text-black tablet:text-white mobile:shadow-md">
@@ -108,7 +108,7 @@ function handleNavBtn(){
         </ul>
       </div>
 
-      <div className="flex tablet:hidden justify-center m-auto border-[1px] border-black bg-white rounded-lg mobile:px-3 w-11/12 h-8 my-1 z-0">
+      <div className="flex tablet:hidden justify-center m-auto border-[1px] border-black bg-white rounded-lg mobile:px-3 w-11/12 h-8 my-[5px] z-0">
         <img className="scale-50" src={mobSearch_icon} alt="mobSearch_icon"/>
         <input type="text" placeholder="Lipsticks" className="w-full border-none focus:outline-none text-black"/>
       </div>

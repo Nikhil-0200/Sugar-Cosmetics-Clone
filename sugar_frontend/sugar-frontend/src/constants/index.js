@@ -25,25 +25,29 @@ import {
   sugarPlaySide_image,
 } from "../assets/images/nav_images/sideImages";
 
-
-import {firstSlider1_image1,
+import {
+  firstSlider1_image1,
   firstSlider1_image2,
   firstSlider1_image3,
   firstSlider1_image4,
   firstSlider1_image5,
-  firstSlider1_image6
-} from "../assets/images/firstSlider_images/index"
+  firstSlider1_image6,
+} from "../assets/images/firstSlider_images/index";
+
+import {
+  mbFirstSlider1_image1,
+  mbFirstSlider1_image2,
+  mbFirstSlider1_image3,
+  mbFirstSlider1_image4,
+  mbFirstSlider1_image5,
+  mbFirstSlider1_image6,
+} from "../assets/images/firstSlider_images/index";
 
 export const sideNavLink = [
   {
     label: "Lips",
     src: lipsSide_image,
-    details: [
-      "Lipsticks",
-      "Lip Care",
-      "Lipstick Sets & Combos",
-      "VIEW ALL"
-    ],
+    details: ["Lipsticks", "Lip Care", "Lipstick Sets & Combos", "VIEW ALL"],
   },
   {
     label: "Eyes",
@@ -55,7 +59,7 @@ export const sideNavLink = [
       "Mascara",
       "Eyeshadows",
       "Eye Value Sets",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
@@ -71,7 +75,7 @@ export const sideNavLink = [
       "Blush",
       "Bronzer & Contour",
       "Face Sets & Combos",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
@@ -85,7 +89,7 @@ export const sideNavLink = [
       "Lip & Eye Care",
       "Skincare Sets & Combos",
       "Skincare Ranges",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
@@ -97,17 +101,13 @@ export const sideNavLink = [
       "Skincare Sets",
       "e-Gift Cards",
       "SUGAR Merch",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
     label: "Accessories",
     src: accSide_image,
-    details: [
-      "Brushes",
-      "Makeup Tools",
-      "VIEW ALL"
-    ],
+    details: ["Brushes", "Makeup Tools", "VIEW ALL"],
   },
   {
     label: "Bestsellers",
@@ -122,7 +122,7 @@ export const sideNavLink = [
       "Blush",
       "Bronzer & Contour",
       "Face Sets & Combos",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
@@ -138,7 +138,7 @@ export const sideNavLink = [
       "Blush",
       "Bronzer & Contour",
       "Face Sets & Combos",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
@@ -154,7 +154,7 @@ export const sideNavLink = [
       "Blush",
       "Bronzer & Contour",
       "Face Sets & Combos",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
   {
@@ -170,31 +170,29 @@ export const sideNavLink = [
       "Blush",
       "Bronzer & Contour",
       "Face Sets & Combos",
-      "VIEW ALL"
+      "VIEW ALL",
     ],
   },
 ];
 
 export const sideNavLink1 = [
-  {label: "blog", href:"/"},
-  {label: "offers", href:"/"},
-  {label: "stores", href:"/"},
-  {label: "corporate gifting", href:"/"},
-  {label: "help & support", href:"/"},
-  {label: "faq", href:"/"},
-  {label: "refund & return policy", href:"/"},
-  {label: "terms & conditions", href:"/"},
-  {label: "careers", href:"/"},
-  {label: "about us", href:"/"}
+  { label: "blog", href: "/" },
+  { label: "offers", href: "/" },
+  { label: "stores", href: "/" },
+  { label: "corporate gifting", href: "/" },
+  { label: "help & support", href: "/" },
+  { label: "faq", href: "/" },
+  { label: "refund & return policy", href: "/" },
+  { label: "terms & conditions", href: "/" },
+  { label: "careers", href: "/" },
+  { label: "about us", href: "/" },
 ];
 
 export const firstSliderLink = [
-  {src:firstSlider1_image1},
-  {src: firstSlider1_image2},
-  {src: firstSlider1_image3},
-  {src: firstSlider1_image4},
-  {src: firstSlider1_image5},
-  {src: firstSlider1_image6}
-]
-
-
+  { src: firstSlider1_image1, srcMb: mbFirstSlider1_image1 },
+  { src: firstSlider1_image2, srcMb: mbFirstSlider1_image2 },
+  { src: firstSlider1_image3, srcMb: mbFirstSlider1_image3 },
+  { src: firstSlider1_image4, srcMb: mbFirstSlider1_image4 },
+  { src: firstSlider1_image5, srcMb: mbFirstSlider1_image5 },
+  { src: firstSlider1_image6, srcMb: mbFirstSlider1_image6 },
+];

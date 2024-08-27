@@ -1,5 +1,3 @@
-import { RiH1 } from "react-icons/ri"
-
 export const Title = ({text}) =>{
     return(
         <div className="flex justify-center items-center">
