@@ -1,8 +1,12 @@
+import sugarPlayBig_image from "../assets/images/sugarPlay/sugarPlayBig_image.avif"
+import Page from "../components/Page";
+
 const SugarPlay = () =>{
     return(
-        <div>
-            This is a SugarPlay Page.
-        </div>
+        <section>
+            <Page bgImage={sugarPlayBig_image} pageName={"Sugar Play Products"}/>
+
+        </section>
     )
 }
 
