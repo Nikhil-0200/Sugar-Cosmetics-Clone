@@ -208,14 +208,22 @@ export const firstSliderLink = [
   { src: firstSlider1_image6, srcMb: mbFirstSlider1_image6 },
 ];
 
-
 export const sugarIconicLink = [
-  {src: image_2016},
-  {src: image_2017},
-  {src: image_2018},
-  {src: image_2019},
-  {src: image_2020},
-  {src: image_2021},
-  {src: image_2022},
-  {src: image_2023},
+  { src: image_2016 },
+  { src: image_2017 },
+  { src: image_2018 },
+  { src: image_2019 },
+  { src: image_2020 },
+  { src: image_2021 },
+  { src: image_2022 },
+  { src: image_2023 },
+];
+
+export const categoryLinks = [
+  { label: "Lips" },
+  { label: "Eyes" },
+  { label: "Face" },
+  { label: "Nails" },
+  { label: "Skincare" },
+  { label: "Accessories" },
 ];

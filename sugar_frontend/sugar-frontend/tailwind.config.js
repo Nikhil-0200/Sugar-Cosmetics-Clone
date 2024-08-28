@@ -34,6 +34,9 @@ export default {
         navTopImage: "url('./assets/images/pinkNav_images/pinkNav_bg.jpg')",
         homePageBG1: "url('./assets/images/bg/homePageBG1.jpg')",
       },
+      boxShadow:{
+        "3xl": 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+      },
     },
   },
   plugins: [],

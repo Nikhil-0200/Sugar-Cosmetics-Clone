@@ -42,7 +42,7 @@ export const BestSeller = () => {
         url: `https://sugar-cosmetics-clone.onrender.com/product/item?page=${pages}&limit=${limits}`,
       });
       setData(res.data.item);
-      console.log(res.data.item);
+      console.log(res.data);
       setTotalPages(res.data.totalPages)
       
       setLoading(false);
@@ -92,7 +92,7 @@ export const BestSeller = () => {
       <Title text={"Bestsellers"} />
         </div>
 
-      <div className="flex justify-between mobile:justify-center mobile:gap-3 laptop:px-16 tablet:px-6 mobile:px-8 mobile:relative ">
+      <div className="flex justify-between mobile:justify-center mobile:gap-3 laptop:px-16 tablet:px-6 mobile:px-8 mobile:relative py-10">
         <button className="mobile:absolute tablet:static mobile:top-1/2 mobile:left-4" style={{scale:"2.5", paddingRight: "7px", color:"aqua"}} onClick={handlePrev}>
           <IoIosArrowDropleftCircle />
         </button>
