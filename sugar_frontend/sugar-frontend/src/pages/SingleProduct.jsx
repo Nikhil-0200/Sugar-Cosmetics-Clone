@@ -2,14 +2,16 @@ import { Link, useParams } from "react-router-dom";
 import { MdArrowForwardIos } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Stack, HStack, VStack, Box, Text } from "@chakra-ui/react";
+import { Stack, Box, Text } from "@chakra-ui/react";
 import { FaRupeeSign } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
-import { wishlistButton_icon } from "../assets/svg/icon";
+import { star_icon, wishlistButton_icon } from "../assets/svg/icon";
 
 const SingleProduct = () => {
   const { id } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+  const [bigImage, setBigImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null); // State to track selected image
 
   async function fetchProduct() {
     try {
@@ -18,9 +20,10 @@ const SingleProduct = () => {
         url: `https://sugar-cosmetics-clone.onrender.com/product/item?_id=${id}`,
       });
       setData(res.data.item);
-      // console.log(res.data.item[0].title);
+      setBigImage(res.data.item[0].images[0].url);
+      setSelectedImage(res.data.item[0].images[0].url); // Initialize the selected image
     } catch (error) {
-      console.log(`Error occuured ${error}`);
+      console.log(`Error occurred: ${error}`);
     }
   }
 
@@ -34,6 +37,11 @@ const SingleProduct = () => {
 
   const productData = data[0];
   const { title, price, ratings, images } = productData || {};
+
+  const handleClick = (imageUrl) => {
+    setBigImage(imageUrl);
+    setSelectedImage(imageUrl); // Update the selected image
+  };
 
   return (
     <section className="border-2 border-blue-300 tablet:mt-marginSectionT mobile:mt-marginSectionTMob pb-paddingSectionB font-sans">
@@ -51,18 +59,67 @@ const SingleProduct = () => {
         alignContent="center"
         justifyContent="center"
         w="90%"
-        border="2px"
         margin="auto"
-        px={10}
+        px={5}
+        h="auto"
+        position="relative"
+        className="shadow-3xl rounded-xl"
+        py={4}
+        gap={7}
       >
-        <Stack bg="yellow" h="40px" w="40%">
-          <Box>Images</Box>
+        <Stack
+          w="40%"
+          direction="row"
+          flexDirection="row-reverse"
+          padding={2}
+          gap={7}
+          position="sticky"
+          top="30%"
+          alignSelf="flex-start"
+          maxH="80vh"
+          overflow="auto"
+        >
+          <Box className="border-[1px] border-gray-300 w-full h-[300px] overflow-hidden p-2 rounded-lg">
+            <img className="w-full h-full object-fill" src={bigImage} alt="" />
+          </Box>
+
+          <Box className="flex flex-col gap-3 py-8">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`border-[1px] ${
+                  selectedImage === image.url ? "border-black" : "border-gray-300"
+                } w-[80px] h-[80px] rounded-xl overflow-hidden cursor-pointer`}
+                onClick={() => handleClick(image.url)}
+              >
+                <img
+                  className="w-full h-full object-cover"
+                  src={image.url}
+                  alt={`image${index}`}
+                />
+              </div>
+            ))}
+          </Box>
         </Stack>
 
-        <Stack h="40px" w="55%" fontSize="20px" border="2px" borderColor="red">
+        <Stack
+          w="55%"
+          fontSize="20px"
+          direction="row"
+          flexDirection="column"
+          gap={10}
+          py={2}
+        >
           <Text>{title}</Text>
 
-          <Box>
+          <Box className="flex flex-col gap-2">
+            <div className="flex items-center laptop:text-[13px] tablet:text-[16px] text-black border-[1px] border-black w-fit rounded-md px-2 py-1 gap-2">
+              <img src={star_icon} alt="star_icon" />
+              <p>
+                <span className="pr-1 font-bold">{ratings}</span>(5)
+              </p>
+            </div>
+
             <Text as="b" display="flex" flexDirection="row" alignItems="center">
               <FaRupeeSign />
               {price}.00
@@ -103,15 +160,15 @@ const SingleProduct = () => {
           </Box>
 
           <div className="flex gap-3 justify-start w-full pb-2 px-1.5">
-                <img
-                  width={50}
-                  src={wishlistButton_icon}
-                  alt="wishlistButton_icon"
-                />
-                <button className="bg-black px-8 laptop:py-3 rounded-md text-white font-bold w-[40%] tablet:px-0 mobile:px-0">
-                  ADD TO BAG
-                </button>
-              </div>
+            <img
+              width={50}
+              src={wishlistButton_icon}
+              alt="wishlistButton_icon"
+            />
+            <button className="bg-black px-8 laptop:py-3 rounded-md text-white font-bold w-[40%] tablet:px-0 mobile:px-0">
+              ADD TO BAG
+            </button>
+          </div>
         </Stack>
       </Stack>
     </section>
