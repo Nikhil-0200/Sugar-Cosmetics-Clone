@@ -1,10 +1,17 @@
 import { price_icon, star_icon, wishlistButton_icon } from "../assets/svg/icon";
 import { MdCurrencyRupee } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export const Card = ({ data }) => {
+  const navigate = useNavigate();
+
+  function handleClick(id){
+    navigate(`/item/${id}`)
+  }
+
   return (
     <section className="flex justify-center items-center content-center mobile:pb-10 font-sans">
-      <div className=" mobile:w-[170px] tablet:w-[210px] laptop:w-[245px] shadow-3xl laptop:h-[450px] rounded-2xl overflow-hidden bg-white text-black flex flex-col justify-between h-auto">
+      <div className=" mobile:w-[170px] tablet:w-[210px] laptop:w-[245px] shadow-3xl laptop:h-[450px] rounded-2xl overflow-hidden bg-white text-black flex flex-col justify-between h-auto" onClick={()=>handleClick(data._id)}>
         <div className="h-[50%] rounded-xl bg-cover bg-center overflow-hidden">
           <img
             src={data.images[0].url}
