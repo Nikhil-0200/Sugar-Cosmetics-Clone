@@ -2,8 +2,9 @@ import sugar_cos_image from "../assets/images/nav_images/sugar_cos_image.gif";
 import { BiGift } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { IconContext } from "react-icons";
-import mobSugar_Image from "../assets/images/nav_images/mobSugar_Image.gif"
+import mobSugar_Image from "../assets/images/nav_images/mobSugar_Image.gif";
 import { SideMenu } from "../pages/SideMenu";
+import { useContext } from "react";
 
 import {
   cart_icon,
@@ -17,31 +18,41 @@ import {
 } from "../assets/svg/icon";
 import { navLinks } from "../constants";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Nav = () => {
+  const { auth, Logout } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
-function handleNavBtn(){
-  setMenuOpen(!menuOpen)  
-}
+  function handleNavBtn() {
+    setMenuOpen(!menuOpen);
+  }
 
   return (
     <section className="font-sans mobile: tablet:bg-black text-white mobile:z-10 mobile:fixed mobile:w-full top-0 bg-white pb-1">
-      {menuOpen && <SideMenu setMenuClose={setMenuOpen} /> }
-      
+      {menuOpen && <SideMenu setMenuClose={setMenuOpen} />}
+
       <div className="flex justify-between text-navFont py-4 tablet:px-5 laptop:px-16 mobile:px-3 mobile:bg-white tablet:bg-black mobile:text-black tablet:text-white mobile:shadow-md">
         <div className="flex w-[70%] tablet:gap-[20px] laptop:gap-[70px]">
           <div className="laptop:w-[200px] tablet:flex-none mobile:flex mobile:gap-6">
-          <IconContext.Provider
+            <IconContext.Provider
               value={{ size: 22, className: "global-class-name" }}
             >
-            <button className="tablet:hidden" onClick={handleNavBtn}>
-            <HiMenuAlt2 />
-            </button>
+              <button className="tablet:hidden" onClick={handleNavBtn}>
+                <HiMenuAlt2 />
+              </button>
             </IconContext.Provider>
 
-            <a className="mobile:hidden tablet:flex tablet:w-[170px] laptop:flex laptop:w-[200px] justify-center items-center" href={"/"}>
-              <img src={sugar_cos_image} alt="Sugar Cosmetic Logo" className="tablet:max-w-full tablet:max-h-full laptop:max-w-full laptop:max-h-full" />
+            <a
+              className="mobile:hidden tablet:flex tablet:w-[170px] laptop:flex laptop:w-[200px] justify-center items-center"
+              href={"/"}
+            >
+              <img
+                src={sugar_cos_image}
+                alt="Sugar Cosmetic Logo"
+                className="tablet:max-w-full tablet:max-h-full laptop:max-w-full laptop:max-h-full"
+              />
             </a>
             <a className="tablet:hidden" href="/">
               <img className="mobile:w-[130px]" src={mobSugar_Image} alt="" />
@@ -62,9 +73,17 @@ function handleNavBtn(){
         </div>
 
         <div className="flex justify-end gap-10 laptop:w-[300px]">
-          <span className="flex gap-1 mobile:hidden tablet:flex">
+          <span className="flex tablet:gap-4 mobile:hidden tablet:flex items-center">
             <img className="w-5" src={person_icon} alt="person_icon" />
-            <a href="/signIn"><p className="content-center">Login/Register</p></a>
+            {auth.isAuth === false ? (
+              <a href="/login">
+                <p className="content-center">Login</p>
+              </a>
+            ) : (
+              <p className="content-center" onClick={() => Logout()}>
+                Logout
+              </p>
+            )}
           </span>
 
           <span className="flex tablet:w-1/3 justify-between gap-6">
@@ -75,25 +94,36 @@ function handleNavBtn(){
                 <BiGift />
               </a>
             </IconContext.Provider>
-            <a className="content-center mobile:hidden tablet:block" href="/wishList">
+            <a
+              className="content-center mobile:hidden tablet:block"
+              href="/wishList"
+            >
               <img src={wishlist_icon} alt="" />
             </a>
-            <a className="content-center mobile:block tablet:hidden" href="/wishList">
+            <a
+              className="content-center mobile:block tablet:hidden"
+              href="/wishList"
+            >
               <img className="size-[22px]" src={mobWishlist_icon} alt="" />
             </a>
-            <a className="content-center mobile:hidden tablet:block" href="/cart">
+            <Link
+              className="content-center mobile:hidden tablet:block"
+              to="/cart"
+            >
               <img src={cart_icon} alt="" />
-            </a>
-            <a className="content-center  mobile:block tablet:hidden" href="/cart">
+            </Link>
+            <a
+              className="content-center  mobile:block tablet:hidden"
+              href="/cart"
+            >
               <img className="size-[22px]" src={mobCart_icon} alt="" />
             </a>
             <a
               className="content-center mobile:hidden laptop:flex"
               href="/offer"
             >
-              <img  src={discount_icon} alt="" />
+              <img src={discount_icon} alt="" />
             </a>
-            
           </span>
         </div>
       </div>
@@ -109,10 +139,13 @@ function handleNavBtn(){
       </div>
 
       <div className="flex tablet:hidden justify-center m-auto border-[1px] border-black bg-white rounded-lg mobile:px-3 w-11/12 h-8 my-[5px] z-0">
-        <img className="scale-50" src={mobSearch_icon} alt="mobSearch_icon"/>
-        <input type="text" placeholder="Lipsticks" className="w-full border-none focus:outline-none text-black"/>
+        <img className="scale-50" src={mobSearch_icon} alt="mobSearch_icon" />
+        <input
+          type="text"
+          placeholder="Lipsticks"
+          className="w-full border-none focus:outline-none text-black"
+        />
       </div>
-
     </section>
   );
 };

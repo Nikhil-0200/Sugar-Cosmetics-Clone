@@ -1,15 +1,18 @@
 import { useLocation } from "react-router-dom";
 import { Container, Text, Box, Input, Flex, Button } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { SingInCab_icon, SingInCard_icon } from "../assets/svg/icon";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
-const SignInTwo = () => {
+
+const LogIn = () => {
+  const { auth, Login, Logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formState, setFormState] = useState({
     email: "",
-    userName: "",
-    fullName: "",
     password: "",
   });
 
@@ -17,17 +20,22 @@ const SignInTwo = () => {
     try {
       const res = await axios({
         method: "post",
-        url: "https://sugar-cosmetics-clone.onrender.com/user/register",
+        url: "https://sugar-cosmetics-clone.onrender.com/user/login",
         data: formState,
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      alert(`User registered successfully`);
+      if (res.data?.token) {
+        alert(`${res.data.msg}`);
+        Login(res.data.token);
+        console.log(res.data);
+        navigate("/lips");
+      }      
     } catch (error) {
-      alert(`Error occurred while registering user`);
-      console.log(`Error occurred while registering user ${error}`);
+      alert(error.response.data.msg)
+      console.log(`Error occurred while login ${error}`);
     }
   }
 
@@ -39,6 +47,11 @@ const SignInTwo = () => {
   function handleSubmit(e) {
     e.preventDefault();
     registerUser();
+
+    setFormState({
+      email: "",
+      password: ""
+    })
   }
 
   return (
@@ -47,18 +60,20 @@ const SignInTwo = () => {
         <Container maxW="xl" className="font-nikhil-regular" my={10}>
           <Box>
             <Flex flexDirection="column" gap={6}>
-            <Box>
+              <Box>
               <Text className="font-nikhil font-bold" fontSize="3xl">
-                Create Account
+                Login
               </Text>
 
-              <Link to="/login">
+              <Link to="/signin">
               <Text fontSize="15px" paddingY="14px" color="blue" textDecoration="underline">
-                LogIn
+                SignUp
               </Text>
               </Link>
               
               </Box>
+              
+
 
               <Box className="flex flex-col gap-3">
                 <Text className="flex gap-3 items-center">
@@ -91,35 +106,10 @@ const SignInTwo = () => {
                   border="1px"
                 />
               </Box>
+
               <Box>
                 <label className="font-nikhil font-semibold text-[14px]">
-                  User name <span>*</span>
-                </label>
-                <Input
-                  rounded="0"
-                  type="text"
-                  name="userName"
-                  value={formState.userName}
-                  onChange={handleChange}
-                  border="1px"
-                />
-              </Box>
-              <Box>
-                <label className="font-nikhil font-semibold text-[14px]">
-                  Full name <span>*</span>
-                </label>
-                <Input
-                  rounded="0"
-                  type="text"
-                  name="fullName"
-                  value={formState.fullName}
-                  onChange={handleChange}
-                  border="1px"
-                />
-              </Box>
-              <Box>
-                <label className="font-nikhil font-semibold text-[14px]">
-                  Create password
+                  Password
                   <span>*</span>
                 </label>
                 <Input
@@ -151,7 +141,7 @@ const SignInTwo = () => {
             fontSize="12px"
             onClick={handleSubmit}
           >
-            Create Account
+            Login
           </Button>
         </Container>
       </div>
@@ -159,4 +149,4 @@ const SignInTwo = () => {
   );
 };
 
-export { SignInTwo };
+export { LogIn };

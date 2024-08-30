@@ -16,6 +16,7 @@ import {
 import { FaRupeeSign } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { star_icon, wishlistButton_icon } from "../assets/svg/icon";
+import { AddToCart } from "../components/AddToCart";
 
 
 const SingleProduct = () => {
@@ -182,12 +183,12 @@ const SingleProduct = () => {
               src={wishlistButton_icon}
               alt="wishlistButton_icon"
             />
-            <button className="bg-black px-8 laptop:py-3 rounded-md text-white font-bold laptop:w-[40%] tablet:w-[60%] mobile:w-[100%] tablet:px-0 mobile:px-0">
+            <button className="bg-black px-8 laptop:py-3 rounded-md text-white font-bold laptop:w-[40%] tablet:w-[60%] mobile:w-[100%] tablet:px-0 mobile:px-0" onClick={()=> AddToCart(id)}>
               ADD TO BAG
             </button>
           </div>
 
-          //
+          
           <Accordion defaultIndex={[0]} allowMultiple>
             <AccordionItem borderY="1px" borderStyle="dashed" py={2} borderColor="gray">
               <h2>

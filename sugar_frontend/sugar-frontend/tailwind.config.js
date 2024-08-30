@@ -34,6 +34,7 @@ export default {
       backgroundImage: {
         navTopImage: "url('./assets/images/pinkNav_images/pinkNav_bg.jpg')",
         homePageBG1: "url('./assets/images/bg/homePageBG1.jpg')",
+        signInBg: "url('./assets/images/bg/signInBG.jpg')"
       },
       boxShadow:{
         "3xl": 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
