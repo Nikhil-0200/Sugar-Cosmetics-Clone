@@ -30,8 +30,13 @@ import home_icon from "./home_icon.svg";
 import mobSearch_icon from "./mobSearch_icon.svg";
 import mobGift_icon from "./mobGift_icon.svg";
 import mobMenu_icon from "./mobMenu_icon.svg";
-import mobCart_icon from "./mobCart_icon.svg"
-import mobWishlist_icon from "./mobWishlist_icon.svg"
+import mobCart_icon from "./mobCart_icon.svg";
+import mobWishlist_icon from "./mobWishlist_icon.svg";
+
+//
+
+import SingInCab_icon from "./SingInCab_icon.svg";
+import SingInCard_icon from "./SingInCard_icon.svg";
 
 export {
   arrow_icon,
@@ -66,5 +71,8 @@ export {
   mobGift_icon,
   mobMenu_icon,
   mobCart_icon,
-  mobWishlist_icon
+  mobWishlist_icon,
+  //
+  SingInCab_icon,
+  SingInCard_icon,
 };

@@ -8,6 +8,7 @@ import { Nails } from "../pages/Nails";
 import { SkinCare } from "../pages/SkinCare";
 import { Accessories } from "../pages/Accessories";
 import { SingleProduct } from "../pages/SingleProduct";
+import { SignInTwo } from "../pages/SignIn";
 
 const Routing = () =>{
     return(
@@ -22,6 +23,7 @@ const Routing = () =>{
                 <Route path="/skincare" element={<SkinCare/>}/>
                 <Route path="/accessories" element={<Accessories/>}/>
                 <Route path="/item/:id" element={<SingleProduct/>} />
+                <Route path="/signIn" element={<SignInTwo/>} />
             </Routes>
         </div>
     )

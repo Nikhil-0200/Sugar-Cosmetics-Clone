@@ -3,7 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ["Roboto", "Poppins"],
+      sans: ["Roboto"],
+      nikhil: ["Poppins"],
     },
     fontSize: {
       navFont: "15px",

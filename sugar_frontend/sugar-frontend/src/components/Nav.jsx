@@ -64,7 +64,7 @@ function handleNavBtn(){
         <div className="flex justify-end gap-10 laptop:w-[300px]">
           <span className="flex gap-1 mobile:hidden tablet:flex">
             <img className="w-5" src={person_icon} alt="person_icon" />
-            <p className="content-center">Login/Register</p>
+            <a href="/signIn"><p className="content-center">Login/Register</p></a>
           </span>
 
           <span className="flex tablet:w-1/3 justify-between gap-6">
