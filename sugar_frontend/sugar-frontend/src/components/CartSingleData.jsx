@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
+import { CartButton } from "./CartButton";
 
 
-const CartSingleData = ({ productId }) => {
+const CartSingleData = ({ productId, quantity }) => {
   const [data, setData] = useState({});
   async function fetchData() {
     try {
@@ -21,7 +22,7 @@ const CartSingleData = ({ productId }) => {
   }, []);
 
   return (
-    <section className=" border-b-[0.5px] border-black flex justify-between py-3">
+    <section className=" border-b-[0.5px] border-gray-500 flex justify-between py-3">
       <div className="flex gap-3">
         <div className="w-[60px] h-[80px] border-[1px] border-black rounded-xl overflow-hidden">
           {data.images && data.images.length > 0 && (
@@ -34,8 +35,8 @@ const CartSingleData = ({ productId }) => {
         </div>
       </div>
 
-      <div>
-        🗑️
+      <div className="  flex flex-col justify-center">
+        <CartButton quantity={quantity} productId={productId}/>
       </div>
     </section>
   );

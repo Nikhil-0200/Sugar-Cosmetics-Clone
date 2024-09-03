@@ -49,13 +49,13 @@ const Cart = () => {
         </div>
 
         <section className="flex gap-5">
-            <div id="leftSide" className="border-2 border-gray-500 w-1/2 font-sans">
+            <div id="leftSide" className=" w-1/2 font-sans">
             <h1 className="font-bold text-[18px]">BAG SUMMARY</h1>
 
-            <div className="border-[1px] border-black p-3">
+            <div className="border-[1px] border-black p-3 rounded-xl">
               {data.map((ele)=>(
                 <div key={ele.productId} >
-                  <CartSingleData productId={ele.productId}/>
+                  <CartSingleData productId={ele.productId} quantity={ele.quantity}/>
                 </div>
               ))}
             </div>
