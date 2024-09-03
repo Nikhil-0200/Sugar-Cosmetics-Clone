@@ -31,7 +31,10 @@ cartRouter.post("/addToCart/:id", async (req, res) => {
     if (existingItemIndex >= 0) {
       cart.items[existingItemIndex].quantity += 1;
     } else {
-      cart.items.push({ productId: id, quantity: 1 });
+      cart.items.push({
+        productId: id,
+        quantity: 1,
+      });
     }
 
     await cart.save();
@@ -41,47 +44,87 @@ cartRouter.post("/addToCart/:id", async (req, res) => {
   }
 });
 
-cartRouter.get("/cartItems", async (req, res)=>{
-    
-    const userId = req.user._id;
-    
-    try {
-        const items = await cartModel.find({userId});
-        
-       return res.status(200).json({msg: `Item fetched successfully from cart`, items})
-        
-    } catch (error) {
-       return res.status(500).json({msg: `Error occurred while fetching data from cart ${error}`, })
+cartRouter.get("/cartItems", async (req, res) => {
+  const userId = req.user._id;
+
+  try {
+    const items = await cartModel.find({ userId });
+
+    return res
+      .status(200)
+      .json({ msg: `Item fetched successfully from cart`, items });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: `Error occurred while fetching data from cart ${error}` });
+  }
+});
+
+cartRouter.delete("/deleteItem/:id", async (req, res) => {
+  const { id } = req.params;
+  const userId = req.user._id;
+
+  try {
+    let cart = await cartModel.findOne({ userId });
+
+    if (!cart) {
+      return res.status(400).json({ msg: `Cart not found` });
     }
-})
 
-cartRouter.delete("/deleteItem/:id", async (req, res)=>{
+    const itemIndex = cart.items.findIndex(
+      (item) => item.productId.toString() === id.toString()
+    );
 
-    const {id} = req.params;
-    const userId = req.user._id;
-
-    try {
-        let cart = await cartModel.findOne({userId});
-
-        if(!cart){
-            return res.status(400).json({msg: `Cart not found`})
-        }
-
-        const itemIndex = cart.items.findIndex(item => item.productId.toString() === id.toString());
-
-        if(itemIndex === -1){
-            return res.status(404).json({ msg: `Product not found in cart` });
-        }
-
-        cart.items.splice(itemIndex, 1);
-
-        await cart.save()
-
-        res.status(200).json({ msg: `Product deleted from cart successfully`});
-
-    } catch (error) {
-        return res.status(500).json({msg: `Error occurred while deleting product from the cart ${error}`,})
+    if (itemIndex === -1) {
+      return res.status(404).json({ msg: `Product not found in cart` });
     }
-})
+
+    cart.items.splice(itemIndex, 1);
+
+    await cart.save();
+
+    res.status(200).json({ msg: `Product deleted from cart successfully` });
+  } catch (error) {
+    return res.status(500).json({
+      msg: `Error occurred while deleting product from the cart ${error}`,
+    });
+  }
+});
+
+cartRouter.patch("/updateQuantity/:id", async (req, res) => {
+  const { id } = req.params; // Product ID
+  const { quantity } = req.body; // New quantity
+  const userId = req.user._id; // User ID
+
+  try {
+    let cart = await cartModel.findOne({ userId });
+
+    if (!cart) {
+      return res.status(404).json({ msg: `Cart not found` });
+    }
+
+    const itemIndex = cart.items.findIndex(
+      (item) => item.productId.toString() === id.toString()
+    );
+
+    if (itemIndex === -1) {
+      return res.status(404).json({ msg: `Product not found in cart` });
+    }
+
+    cart.items[itemIndex].quantity = quantity;
+
+    if (quantity <= 0) {
+      cart.items.splice(itemIndex, 1);
+    }
+
+    await cart.save();
+
+    res.status(200).json({ msg: `Quantity updated successfully`, cart });
+  } catch (error) {
+    return res.status(500).json({
+      msg: `Error occurred while updating quantity ${error}`,
+    });
+  }
+});
 
 export default cartRouter;
