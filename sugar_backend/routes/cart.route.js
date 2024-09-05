@@ -127,4 +127,28 @@ cartRouter.patch("/updateQuantity/:id", async (req, res) => {
   }
 });
 
+cartRouter.post("/clearCart", async (req, res)=>{
+
+  const userId = req.user._id;
+
+  try {
+    let cart = await cartModel.findOne({userId});
+
+    if(!cart){
+      return res.status(200).json({msg: `Cart not found`})
+    }
+
+    cart.items = [];
+
+    await cart.save();
+
+    res.status(200).json({ msg: "Cart cleared successfully" });
+
+  } catch (error) {
+    return res.status(500).json({
+      msg: `Error occurred while clearing the cart ${error}`,
+    }); 
+  }
+})
+
 export default cartRouter;
