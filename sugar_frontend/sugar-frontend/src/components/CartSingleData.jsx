@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import { CartButton } from "./CartButton";
+import { Cart } from "../pages/Cart";
 
 
 const CartSingleData = ({ productId, quantity }) => {
@@ -12,7 +13,6 @@ const CartSingleData = ({ productId, quantity }) => {
         method: "get",
         url: `https://sugar-cosmetics-clone.onrender.com/product/item?_id=${productId}`,
       });
-      console.log(res.data.item[0]);
       setData(res.data.item[0]);
     } catch (error) {}
   }

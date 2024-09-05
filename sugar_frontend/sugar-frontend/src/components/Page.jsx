@@ -61,7 +61,7 @@ const Page = ({ bgImage, pageName, fetchData, cat, setCat }) => {
   }
 
   return (
-    <section className="border-2 border-blue-300 tablet:mt-marginSectionT mobile:mt-marginSectionTMob pb-paddingSectionB font-sans">
+    <section className="tablet:mt-marginSectionT mobile:mt-marginSectionTMob pb-paddingSectionB font-sans">
       <div
         className="bg-center bg-cover tablet:h-[23vh] laptop:h-[45vh] px-10"
         style={{ backgroundImage: `url(${bgImage})` }}

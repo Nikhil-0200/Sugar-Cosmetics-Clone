@@ -4,7 +4,7 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import { IconContext } from "react-icons";
 import mobSugar_Image from "../assets/images/nav_images/mobSugar_Image.gif";
 import { SideMenu } from "../pages/SideMenu";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import {
   cart_icon,
@@ -24,10 +24,30 @@ import { AuthContext } from "../context/AuthContext";
 const Nav = () => {
   const { auth, Logout } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [debounce, setDebounce] = useState("");
 
   function handleNavBtn() {
     setMenuOpen(!menuOpen);
   }
+
+  function handleChange(e){
+    setSearch(e.target.value)
+  }
+
+  useEffect(()=>{
+    const handler = setTimeout(()=>{
+      setDebounce(search);
+    }, 1000);
+
+    return () =>{
+      clearTimeout(handler)
+    }
+
+  }, [search])
+
+  console.log(debounce);
+  
 
   return (
     <section className="font-sans mobile: tablet:bg-black text-white mobile:z-10 mobile:fixed mobile:w-full top-0 bg-white pb-1">
@@ -64,6 +84,8 @@ const Nav = () => {
               className="w-full bg-transparent px-1 pl-5 border-none focus:outline-none"
               type="text"
               placeholder="Try Liquid Lipstick"
+              value={search}
+              onChange={handleChange}
             />
             <span className="bg-white text-black tablet:px-4 laptop:px-7 rounded-r-sm content-center">
               <img src={search_icon} alt="search_icon" />

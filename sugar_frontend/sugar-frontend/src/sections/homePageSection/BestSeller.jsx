@@ -42,7 +42,7 @@ export const BestSeller = () => {
         url: `https://sugar-cosmetics-clone.onrender.com/product/item?page=${pages}&limit=${limits}`,
       });
       setData(res.data.item);
-      console.log(res.data);
+      
       setTotalPages(res.data.totalPages)
       
       setLoading(false);
@@ -96,8 +96,8 @@ export const BestSeller = () => {
         <button className="mobile:absolute tablet:static mobile:top-1/2 mobile:left-4" style={{scale:"2.5", paddingRight: "7px", color:"aqua"}} onClick={handlePrev}>
           <IoIosArrowDropleftCircle />
         </button>
-        {data.map((ele) => (
-          <Card data={ele} />
+        {data.map((ele, index) => (
+          <Card key={index} data={ele} />
         ))}
         <button className="mobile:absolute tablet:static mobile:top-1/2 mobile:right-4 " style={{scale:"2.5", paddingLeft: "7px", color:"aqua"}} onClick={handleNext}>
           <IoIosArrowDroprightCircle />

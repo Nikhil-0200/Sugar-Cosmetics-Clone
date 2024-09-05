@@ -71,17 +71,17 @@ export const FirstSlider = () => {
         <Slider {...settings}>
           {firstSliderLink.map((ele, index) => (
             <div key={index}>
-              <div key={index} className="mobile:hidden tablet:block laptop:block" >
+              <div className="mobile:hidden tablet:block laptop:block" >
                 <img
                   src={ele.src}
-                  alt="SliderImages"
+                  alt={`SliderImages-${index}`}
                 />
               </div>
               <div className="tablet:hidden mobile: block" key={index}>
                 <img
                   
                   src={ele.srcMb}
-                  alt="SliderImages"
+                  alt={`SliderImages-${index}`}
                 />
               </div>
             </div>

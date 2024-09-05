@@ -21,7 +21,6 @@ const CartButton = ({ quantity: initialQuantity, productId }) => {
         }
       );
 
-      console.log(res.data);
     } catch (error) {
       console.error("Failed to update quantity", error);
     }
@@ -64,12 +63,6 @@ const CartButton = ({ quantity: initialQuantity, productId }) => {
     deleteItem()
   }
 
-
-  useEffect(()=>{
-    handleDelete()
-  }, [handleDelete])
-
-
   return (
     <section className="flex items-center gap-5 w-full">
       <button className="text-gray-500" onClick={()=>handleDelete(productId)}>
@@ -86,3 +79,4 @@ const CartButton = ({ quantity: initialQuantity, productId }) => {
 };
 
 export { CartButton };
+  

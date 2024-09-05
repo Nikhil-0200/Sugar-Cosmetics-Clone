@@ -2,66 +2,117 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 import { CartSingleData } from "../components/CartSingleData";
-
+import { useNavigate } from "react-router-dom";
+import { EmptyCart } from "../components/EmptyCart";
+import { Footer } from "../components/Footer";
 
 const Cart = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
-  async function fetchCartItem(){
+  async function fetchCartItem() {
     try {
-      const token  = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
 
-      if(!token){
-        alert(`User is not authenticated. Please log in.`)
-        return
+      if (!token) {
+        alert(`User is not authenticated. Please log in.`);
+        return;
       }
 
       const res = await axios({
         method: "get",
         url: `https://sugar-cosmetics-clone.onrender.com/cart/cartItems`,
-        headers:{
+        headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        }
-      })
-      console.log(res.data);
-      // console.log(res.data.items[0].items);
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
       setData(res.data.items[0].items);
     } catch (error) {
-      const errorMessage = error.response?.data?.msg
-      console.log(errorMessage)
+      const errorMessage = error.response?.data?.msg;
     }
   }
 
-  useEffect(()=>{
-    fetchCartItem()
-  }, [])
+  useEffect(() => {
+    fetchCartItem();
+  }, []);
 
+  function handleOrder() {
+    async function emptyCart() {
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          alert(`User is not authenticated. Please log in.`);
+          return;
+        }
+
+        const res = await axios({
+          method: "post",
+          url: `https://sugar-cosmetics-clone.onrender.com/cart/clearCart`,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setData([]);
+        alert("Order placed successfully!");
+        navigate("/");
+      } catch (error) {
+        alert("There was an issue clearing the cart.");
+      }
+    }
+
+    emptyCart();
+
+  }
 
   return (
-    <section className="border-2 border-blue-300 tablet:mt-marginSectionT mobile:mt-marginSectionTMob pb-paddingSectionB font-sans tablet:px-10 mobile:px-2">
-    <div className="flex items-center text-[14px] gap-3 py-5 ">
-          <p className="text-gray-500">Home</p>
-          <span>
-            <MdArrowForwardIos />
-          </span>
-          <p className="font-bold">Bag</p>
+    <section className="tablet:mt-marginSectionT mobile:mt-marginSectionTMob pb-paddingSectionB font-sans tablet:px-10 mobile:px-2">
+      <div className="flex items-center text-[14px] gap-3 py-5">
+        <p className="text-gray-500">Home</p>
+        <span>
+          <MdArrowForwardIos />
+        </span>
+        <p className="font-bold">Bag</p>
+      </div>
+
+      {data.length > 0 ? (
+        <section className="flex flex-col gap-5">
+        <div id="leftSide" className=" w-full font-sans">
+          <h1 className="font-bold text-[18px] py-5">BAG SUMMARY</h1>
+
+          <div className="border-[1px] border-black p-3 rounded-xl">
+            {data.map((ele) => (
+              <div key={ele.productId}>
+                <CartSingleData
+                  productId={ele.productId}
+                  quantity={ele.quantity}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <section className="flex gap-5">
-            <div id="leftSide" className=" w-1/2 font-sans">
-            <h1 className="font-bold text-[18px]">BAG SUMMARY</h1>
+        <div
+          id="rightSide"
+          className="w-full font-sans text-white flex items-center align-middle justify-end"
+        >
+          <button
+            className="bg-black text-[25px] font-bold px-10 py-2 w-[40%]"
+            onClick={handleOrder}
+          >
+            PLACE ORDER
+          </button>
+        </div>
+      </section>
+      ) : (
 
-            <div className="border-[1px] border-black p-3 rounded-xl">
-              {data.map((ele)=>(
-                <div key={ele.productId} >
-                  <CartSingleData productId={ele.productId} quantity={ele.quantity}/>
-                </div>
-              ))}
-            </div>
-            </div>
-            <div id="rightSide" className="border-2 border-red-500 w-1/2"></div>
-        </section>
+        <EmptyCart/>
+      )}
+
     </section>
   );
 };
