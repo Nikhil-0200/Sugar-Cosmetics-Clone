@@ -10,7 +10,7 @@ Welcome to the Sugar Cosmetics Clone project! This project is a web application 
 
 ## Pages and features
 
-![Project Screenshot](https://github.com/Nikhil-0200/Nike/blob/main/nikhil-nike.netlify.png)
+![Project Screenshot](https://github.com/Nikhil-0200/Sugar-Cosmetics-Clone/blob/main/SUGARCOSMETICSSS.png)
 
 
 
