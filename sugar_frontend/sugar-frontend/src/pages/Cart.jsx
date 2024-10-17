@@ -4,7 +4,6 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { CartSingleData } from "../components/CartSingleData";
 import { useNavigate } from "react-router-dom";
 import { EmptyCart } from "../components/EmptyCart";
-import { Footer } from "../components/Footer";
 
 const Cart = () => {
   const [data, setData] = useState([]);
